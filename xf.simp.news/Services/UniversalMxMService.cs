@@ -20,7 +20,7 @@ namespace xf.simp.news.Services
             {
                 Encoding = Encoding.GetEncoding("windows-1252")
             };
-            UrlRss = new Uri("https://archivo.eluniversal.com.mx/rss/universalmxm.xml");
+            UrlRss = new Uri("https://rss.nytimes.com/services/xml/rss/nyt/World.xml");
         }
 
         public void GetNews()
@@ -32,13 +32,16 @@ namespace xf.simp.news.Services
                     var resultString = a.Result;
                     var xdocument = XDocument.Parse(resultString);
 
+                    XNamespace atom = xdocument.Root.GetNamespaceOfPrefix("atom");
+                    XNamespace media = xdocument.Root.GetNamespaceOfPrefix("media");
+
                     var listOfNews = (from news in xdocument.Descendants("channel").Elements("item")
-                                      where news.Element("description").Value.Contains("<img")
+                                      where news.Element(media + "content")?.Value != null
                                       select new Report
                                       {
                                           Title = news.Element("title").Value,
-                                          Description = GetDescription(news.Element("description").Value),
-                                          UrlImage = GetImageUrl(news.Element("description").Value),
+                                          Description = news.Element("description").Value,
+                                          UrlImage = news.Element(media + "content").Attribute("url").Value,
                                           PubDate = news.Element("pubDate").Value,
                                           Link = news.Element("link").Value
                                       }).ToList();
