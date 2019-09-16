@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using xf.simp.news.Model;
 using xf.simp.news.Services;
@@ -51,14 +52,17 @@ namespace xf.simp.news.ViewModels
             set => Set(ref _IsBusy, value);
         }
 
-        private ActionCommand _ShowArticle_Command;
-        public ActionCommand ShowArticle_Command
+        private ActionCommand<Report> _ShowArticle_Command;
+        public ActionCommand<Report> ShowArticle_Command
         {
             get
             {
                 if (_ShowArticle_Command == null)
                 {
-                    _ShowArticle_Command = new ActionCommand(EventToExecute);
+                    _ShowArticle_Command = new ActionCommand<Report>((report) =>
+                   {
+                       Browser.OpenAsync(report.Link, BrowserLaunchMode.SystemPreferred);
+                   });
                 }
                 return _ShowArticle_Command;
             }
@@ -67,11 +71,6 @@ namespace xf.simp.news.ViewModels
                 _ShowArticle_Command = value;
                 OnPropertyChanged();
             }
-        }
-
-        private void EventToExecute()
-        {
-            Browser.OpenAsync(Reports[0].Link, BrowserLaunchMode.SystemPreferred);
         }
 
         public ActionCommand<string> UpdateArticles { private set; get; }

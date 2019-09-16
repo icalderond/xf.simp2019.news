@@ -39,6 +39,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WebClientHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ItemTappedEventArgsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\BehaviorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\EventToCommandBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectedItemEventArgsToSelectedItemConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
@@ -48,5 +51,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>
 </Project>

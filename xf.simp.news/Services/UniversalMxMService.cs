@@ -16,10 +16,11 @@ namespace xf.simp.news.Services
 
         public UniversalMxMService()
         {
-            webClient = new WebClient
-            {
-                Encoding = Encoding.GetEncoding("windows-1252")
-            };
+            webClient = new WebClient();
+            //{
+            //    Encoding = Encoding.GetEncoding("windows-1252")
+            //}
+            //;
             UrlRss = new Uri("https://rss.nytimes.com/services/xml/rss/nyt/World.xml");
         }
 

@@ -7,5 +7,10 @@
         public string UrlImage { get; set; }
         public string Link { get; set; }
         public string PubDate { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
