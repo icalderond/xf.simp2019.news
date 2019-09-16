@@ -2,44 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="xf.simp.news.Views.ReportsPage"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:behaviors="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              Title="News"
              x:Name="NewsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="TemplateReport">
                 <ViewCell>
-                    <Grid>
-                        <Image
-                            Aspect="AspectFill"
-                            HeightRequest="400"
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Source="{Binding UrlImage}" />
-                        <yummy:PancakeView Opacity="0.5"
-                                           Grid.RowSpan="2">
-                            <yummy:PancakeView.BackgroundGradientStops>
-                                <x:Array Type="{x:Type yummy:GradientStop}">
-                                    <yummy:GradientStop Color="Transparent"
-                                                        Offset="0.4" />
-                                    <yummy:GradientStop Color="#000000"
-                                                        Offset="1" />
-                                </x:Array>
-                            </yummy:PancakeView.BackgroundGradientStops>
-                        </yummy:PancakeView>
-                        <StackLayout Grid.Row="1"
-                                     VerticalOptions="End"
-                                     Margin="10">
+                    <Grid Margin="10">
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Aspect="AspectFit"
+                                Grid.Column="0"
+                                WidthRequest="106"
+                                Source="{Binding UrlImage}"
+                                HorizontalOptions="Start" />
                             <Label Text="{Binding Title}"
                                    FontSize="Large"
-                                   TextColor="White"
-                                   FontAttributes="Bold" />
+                                   TextColor="#171719"
+                                   FontAttributes="Bold"
+                                   Grid.Column="1" />
+                        </Grid>
+                        <StackLayout Grid.Row="1">
                             <Label Text="{Binding Description}"
                                    FontSize="Medium"
-                                   TextColor="White" />
+                                   TextColor="#3C3C3E" />
                             <Label Text="{Binding PubDate}"
-                                   TextColor="White"
+                                   TextColor="Black"
                                    HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                     </Grid>
@@ -55,12 +47,6 @@
             IsPullToRefreshEnabled="True"
             IsRefreshing="{Binding IsBusy}"
             HasUnevenRows="True">
-            <!--<ListView.Behaviors>
-            </ListView.Behaviors>-->
-            <!--<ListView.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                      Command="{Binding Path=BindingContext.ShowArticle_Command, Source={x:Reference NewsPage}}" />
-            </ListView.GestureRecognizers>-->
         </ListView>
     </Grid>
 </ContentPage>
