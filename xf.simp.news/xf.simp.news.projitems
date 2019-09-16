@@ -10,10 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ReportsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -25,19 +21,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UniversalMxMService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IUniversalMxMService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Report.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ReportsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NotificationEnabledObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\GenericEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ActionCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\ReportsPage.xaml.cs">
       <DependentUpon>ReportsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WebClientHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ItemTappedEventArgsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\BehaviorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\EventToCommandBehavior.cs" />
@@ -48,8 +39,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>

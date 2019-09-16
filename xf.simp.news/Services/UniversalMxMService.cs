@@ -57,27 +57,5 @@ namespace xf.simp.news.Services
 
             webClient.DownloadStringAsync(UrlRss);
         }
-
-        private string GetDescription(string value)
-        {
-            var indexof = value.IndexOf("/> ", StringComparison.Ordinal) + 3;
-            var length = value.Length;
-            string result = value.Substring(indexof, length - indexof);
-            return result;
-        }
-
-        private string GetImageUrl(string value)
-        {
-            var indexof = value.IndexOf(@"src=", StringComparison.Ordinal) + 5;
-            var cutedString = value.Substring(indexof, value.Length - indexof);
-            var findQuotes = cutedString.IndexOf("\"", StringComparison.Ordinal);
-            string site = cutedString.Substring(0, findQuotes);
-
-            var textToFind = "http://www.eluniversal";
-            var textToReplace = "https://archivo.eluniversal";
-
-            string resultFormatted = site.Contains(textToFind) ? site.Replace(textToFind, textToReplace) : site;
-            return resultFormatted;
-        }
     }
 }
